@@ -50,3 +50,25 @@ class String
     encoded
   end
 end
+
+class Hash
+  def difference(other_hash)
+    a = self
+    b = other_hash
+    keep_keys = (a.keys | b.keys) - (a.keys & b.keys)
+    self.merge(other_hash).select { |k, v| keep_keys.include?(k) }
+  end
+end
+
+class Fixnum
+  def stringify(base)
+    str = []
+
+    i = 0
+    while (self / base**i) != 0
+      str.unshift((self / base**i) % base)
+      i += 1
+    end
+    str.join("")
+  end
+end
