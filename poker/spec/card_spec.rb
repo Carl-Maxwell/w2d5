@@ -2,8 +2,9 @@ require 'rspec'
 require 'card'
 
 describe Card do
+  subject(:card) { Card.new(:ace, :spade) }
+
   describe "#initialize"
-    subject(:card) { Card.new(:ace, :spade) }
       it "initializes with a suit and value" do
         expect(card.suit).to eq(:spade)
         expect(card.value).to eq(:ace)
@@ -29,4 +30,17 @@ describe Card do
       expect(Card::suits).to include(:ace, :king, :queen, :jack, :five)
     end
   end
+
+  describe "#suit" do
+    it "returns the card's suit" do
+      expect(card.suit).to eq(:spade)
+    end
+  end
+
+  describe "#value" do
+    it "returns the card's value" do
+      expect(card.value).to eq(:ace)
+    end
+  end
+
 end
