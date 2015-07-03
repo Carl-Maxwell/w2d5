@@ -4,7 +4,7 @@ require 'card'
 describe Card do
   subject(:card) { Card.new(:ace, :spades) }
 
-  describe "#initialize"
+  describe "#initialize" do
       it "initializes with a suit and value" do
         expect(card.suit).to eq(:spades)
         expect(card.value).to eq(:ace)
@@ -27,7 +27,7 @@ describe Card do
 
   describe "::values" do
     it "returns a list of the values" do
-      expect(Card::suits).to include(:ace, :king, :queen, :jack, :five)
+      expect(Card::values).to include(:ace, :king, :queen, :jack, :five)
     end
   end
 
