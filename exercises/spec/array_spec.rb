@@ -89,7 +89,7 @@ describe Fixnum do
       expect(234.stringify(16)).to eq("EA")
     end
 
-    it "doen't call built in to_s"
+    it "doen't call built in to_s" do
       expect(5.stringify(10)).not_to recieve(:to_s)
     end
   end
