@@ -29,37 +29,32 @@ describe Hand do
     end
   end
 
-
-
-
-
-
-
-  #high card to high card
+  # Hand::from_string
 
   # ----------------------------------------------------------------------------
   # hand helpers
   # ----------------------------------------------------------------------------
 
-  let(:high_cards) { Card::from_string("AD TD 9S 5C 4C") }
-  let(:high_cards_lower) { Card::from_string("2D TD 9S 5C 4C") }
-  let(:straight_flush) { Card::from_string("8H 7H 6H 5H 4H") }
-
-  let(:four_of_a_kind_cards) { Card::from_string("8H 8S 8C 8D 4H")}
-
-  let(:full_house_cards) { Card::from_string("8H 8S 8C 4D 4H") }
+  let(:high) { Hand::from_string("AD TD 9S 5C 4C", deck) }
+  let(:high_lower) { Hand::from_string("2D TD 9S 5C 4C", deck) }
+  let(:straight_flush) { Hand::from_string("8H 7H 6H 5H 4H", deck) }
+  let(:straight_flush_lower) { Hand::from_string("7H 6H 5H 4H 3H", deck) }
+  let(:four_of_a_kind) { Hand::from_string("8H 8S 8C 8D 4H", deck)}
+  
+  let(:four_of_a_kind_lower) { Hand::from_string("8H 8S 8C 8D 3H", deck)}
+  let(:full_house) { Hand::from_string("8H 8S 8C 4D 4H", deck) }
+  let(:full_house_lower) { Hand::from_string("7H 7S 7C 4D 4H", deck) }
 
   let(:flush) { Card::from_string("8H 7H 6H 5H KH") }
+  let(:flush_lower) { Card::from_string("8H 7H 6H 5H JH") }
 
   let(:straight) { Card::from_string("8H 7H 6H 5H 4C") }
+  let(:straight_lower) { Card::from_string("7H 6H 5H 4H 3C") }
 
-  subject(:high_card_hand1) { Hand.new(high_cards, deck)}
-  subject(:high_card_hand_lower) { Hand.new(high_cards_lower, deck)}
-  subject(:straight_flush) { Hand.new(straight_flush, deck)}
-  subject(:flush) { Hand.new(flush, deck)}
-  subject(:straight) { Hand.new(straight, deck)}
-  subject(:four_of_a_kind) { Hand.new(four_of_a_kind_cards, deck)}
-  subject(:full_house) { Hand.new(full_house, deck)}
+  let(:three_of_a_kind) { Card::from_string("7H 7H 7H 4H 3C") }
+  let(:three_of_a_kind_lower) { Card::from_string("6H 6H 6H 4H 3C") }
+
+  let()
 
   describe "#straight_flush?" do
     it "returns true" do
@@ -141,12 +136,55 @@ describe Hand do
     end
   end
 
-  #straight flush to high card
   describe "#beats?" do
-    it "returns the correct hand from two high card hands" do
+    it "returns correctly from two high card hands" do
       expect(high_card_hand1.beats?(high_card_hand_lower)).to be(true)
+      expect(high_card_hand_lower.beats?(high_card_hand1)).to be(false)
     end
+
+    it "returns correctly when given a straight flush and high card hand" do
+      expect(straight_flush.beats?(high_card_hand_lower)).to be(true)
+      expect(high_card_hand_lower.beats?(straight_flush)).to be(false)
+    end
+
+    it "returns correctly when given a straight flush and high card hand" do
+      expect(straight_flush.beats?(high_card_hand_lower)).to be(true)
+      expect(high_card_hand_lower.beats?(straight_flush)).to be(false)
+    end
+
+    it "deals appropriately with ties" do
+      it "Straight flush" do
+        expect(straight_flush.beats?(straight_flush_lower)).to eq(true)
+      end
+      it "Four of a kind" do
+        expect(four_of_a_kind.beats?(four_of_a_kind_lower)).to eq(true)
+      end
+      it "Full house" do
+        expect(full_house.beats?(full_house_lower)).to eq(true)
+      end
+      it "Flush" do
+        expect(flush.beats?(flush_lower)).to eq(true)
+      end
+      it "Straight" do
+        expect(straight.beats?(straight_lower)).to eq(true)
+      end
+      it "Three of a kind" do
+        expect(three_of_a_kind.beats?(three_of_a_kind_lower)).to eq(true)
+      end
+      it "Two pair" do
+        expect(two_pair.beats?(two_pair_lower)).to eq(true)
+      end
+      it "One pair" do
+        expect(one_pair.beats?(one_pair_lower)).to eq(true)
+      end
+      it "High card" do
+        expect(high_card1.beats?(high_card_lower)).to eq(true)
+      end
+    end
+
   end
+
+
 #hands that exist:
 
   # four of a kind
