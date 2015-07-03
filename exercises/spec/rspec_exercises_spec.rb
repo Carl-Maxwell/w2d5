@@ -90,7 +90,7 @@ describe Fixnum do
     end
 
     it "doen't call built in to_s" do
-      expect(5.stringify(10)).not_to recieve(:to_s)
+      expect(5.stringify(10)).not_to receive(:to_s)
     end
   end
 end

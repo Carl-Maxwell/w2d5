@@ -63,12 +63,20 @@ end
 class Fixnum
   def stringify(base)
     str = []
+    str_map = {}
+    ("0".."9").to_a.each_with_index do |num, idx|
+     str_map[idx] = num
+    end
+    ("A".."F").to_a.each_with_index do |char, idx|
+     str_map[idx + 10] = char
+    end
 
     i = 0
     while (self / base**i) != 0
       str.unshift((self / base**i) % base)
       i += 1
     end
-    str.join("")
+
+    str.map { |num| str_map[num] }.join
   end
 end
