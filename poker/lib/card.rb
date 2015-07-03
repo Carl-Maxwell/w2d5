@@ -1,8 +1,8 @@
 SUIT_STRINGS = {
-    :clubs    => "♣",
-    :diamonds => "♦",
-    :hearts   => "♥",
-    :spades   => "♠"
+    :clubs    => "C",
+    :diamonds => "D",
+    :hearts   => "H",
+    :spades   => "S"
   }
 
   VALUE_STRINGS = {
@@ -14,7 +14,7 @@ SUIT_STRINGS = {
     :seven => "7",
     :eight => "8",
     :nine  => "9",
-    :ten   => "10",
+    :ten   => "T",
     :jack  => "J",
     :queen => "Q",
     :king  => "K",
@@ -35,3 +35,15 @@ SUIT_STRINGS = {
     :queen => 10,
     :king  => 10
   }
+def self.from_string(str)
+  string_to_suit = SUIT_STRINGS.invert
+  string_to_value = VALUE_STRINGS.invert
+  cards = str.split
+  card_objects = []
+  cards.each do |card|
+    val, suit = card.split('')
+    card_objects << Card.new(string_to_val[val], string_to_suit[suit])
+  end
+
+  card_objects
+end
