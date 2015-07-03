@@ -4,7 +4,7 @@ require 'deck'
 describe Deck do
 
   subject(:partial_deck) do
-     Deck.new([Card.new(:ace, :spade), Card.new(:two, :heart)])
+     Deck.new([Card.new(:ace, :spades), Card.new(:two, :hearts)])
    end
 
   describe "#initialize" do

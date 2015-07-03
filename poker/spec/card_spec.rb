@@ -2,18 +2,18 @@ require 'rspec'
 require 'card'
 
 describe Card do
-  subject(:card) { Card.new(:ace, :spade) }
+  subject(:card) { Card.new(:ace, :spades) }
 
   describe "#initialize"
       it "initializes with a suit and value" do
-        expect(card.suit).to eq(:spade)
+        expect(card.suit).to eq(:spades)
         expect(card.value).to eq(:ace)
       end
   end
 
   describe "#override spaceship operator" do
-    subject(:two_of_hearts) { Card.new(:two, :heart) }
-    subject(:king_of_diamonds) { Card.new(:king, :diamond) }
+    subject(:two_of_hearts) { Card.new(:deuce, :hearts) }
+    subject(:king_of_diamonds) { Card.new(:king, :diamonds) }
     it "two of hearts is less than king of diamonds" do
       expect(two_of_hearts < king_of_diamonds).to be(true)
     end
@@ -21,7 +21,7 @@ describe Card do
 
   describe "::suits" do
     it "returns a list of the suits" do
-      expect(Card::suits).to contain_exactly(:club, :diamond, :heart, :spade)
+      expect(Card::suits).to contain_exactly(:clubs, :diamonds, :hearts, :spades)
     end
   end
 
@@ -33,7 +33,7 @@ describe Card do
 
   describe "#suit" do
     it "returns the card's suit" do
-      expect(card.suit).to eq(:spade)
+      expect(card.suit).to eq(:spades)
     end
   end
 
