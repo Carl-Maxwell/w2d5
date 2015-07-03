@@ -52,7 +52,7 @@ describe String do
   subject(:zany) { "zany" }
   subject(:hello) { "hello" }
   describe "#caesar" do
-    it "" do
+    it "shifts hello by 3" do
       expect(hello.caesar(3)).to eq("khoor")
     end
 
