@@ -1,4 +1,5 @@
 require 'rspec'
+require 'card'
 require 'deck'
 
 describe Deck do
@@ -47,14 +48,14 @@ describe Deck do
     it "puts cards back in the bottom of the deck" do
       cards = partial_deck.take(2)
       partial_deck.return_cards(cards)
-      expect(partial_deck.length).to eq(2)
+      expect(partial_deck.count).to eq(2)
     end
 
     it "puts cards back in the bottom of the deck" do
       cards = partial_deck.take(2)
       partial_deck.return_cards(cards)
       partial_deck.return_cards(cards)
-      expect(partial_deck.length).to eq(4)
+      expect(partial_deck.count).to eq(4)
     end
   end
 end

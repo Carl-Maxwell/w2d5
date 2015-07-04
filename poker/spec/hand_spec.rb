@@ -1,5 +1,7 @@
 require 'rspec'
 require 'hand'
+require 'deck'
+require 'byebug'
 
 describe Hand do
   let(:ace_of_spades) { Card.new(:ace, :spades) }
@@ -10,15 +12,15 @@ describe Hand do
   describe "#initialize" do
     it "takes an array of cards and a deck" do
       expect(fresh_hand.cards.count).to be(2)
-      expect(fresh_hand.cards.deck).to be(deck)
+      expect(fresh_hand.deck).to be(deck)
     end
   end
 
   describe "#return_to_deck" do
     it "returns n cards to the deck" do
-      fresh_hand.return_to_deck(cards[0])
-      expect(deck).to receive(:return_cards).with(fresh_hand.cards[0])
-      expect(fresh_hand.count).to be(1)
+      expect(deck).to receive(:return_cards).with([fresh_hand.cards[0]]).and_call_original
+      fresh_hand.return_to_deck([cards[0]])
+      expect(fresh_hand.cards.count).to be(1)
       expect(deck.cards.count).to be(53)
     end
   end
@@ -30,7 +32,7 @@ describe Hand do
   end
 
   # Hand::from_string
-  
+
 
   # ----------------------------------------------------------------------------
   # hand helpers

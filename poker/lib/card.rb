@@ -67,8 +67,14 @@ class Card
     @value = value
   end
 
-  def <=>(other_card)
+  include Comparable
 
+  def <=>(other_card)
+    case
+    when POKER_VALUE[self.value] < POKER_VALUE[other_card.value] then -1
+    when POKER_VALUE[self.value] == POKER_VALUE[other_card.value] then 0
+    when POKER_VALUE[self.value] > POKER_VALUE[other_card.value] then 1
+    end
   end
 
 
