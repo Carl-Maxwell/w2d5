@@ -47,20 +47,20 @@ describe Hand do
   let(:full_house) { Hand::from_string("8H 8S 8C 4D 4H", deck) }
   let(:full_house_lower) { Hand::from_string("7H 7S 7C 4D 4H", deck) }
 
-  let(:flush) { Card::from_string("8H 7H 6H 5H KH") }
-  let(:flush_lower) { Card::from_string("8H 7H 6H 5H JH") }
+  let(:flush) { Hand::from_string("8H 7H 6H 5H KH", deck) }
+  let(:flush_lower) { Hand::from_string("8H 7H 6H 5H JH", deck) }
 
-  let(:straight) { Card::from_string("8H 7H 6H 5H 4C") }
-  let(:straight_lower) { Card::from_string("7H 6H 5H 4H 3C") }
+  let(:straight) { Hand::from_string("8H 7H 6H 5H 4C", deck) }
+  let(:straight_lower) { Hand::from_string("7H 6H 5H 4H 3C", deck) }
 
-  let(:three_of_a_kind) { Card::from_string("7H 7H 7H 4H 3C") }
-  let(:three_of_a_kind_lower) { Card::from_string("6H 6H 6H 4H 3C") }
+  let(:three_of_a_kind) { Hand::from_string("7H 7H 7H 4H 3C", deck) }
+  let(:three_of_a_kind_lower) { Hand::from_string("6H 6H 6H 4H 3C", deck) }
 
-  let(:two_pair) { Card::from_string("7H 7H 5H 5H 3C") }
-  let(:two_pair_lower) { Card::from_string("6H 6H 5H 5H 3C") }
+  let(:two_pair) { Hand::from_string("7H 7H 5H 5H 3C", deck) }
+  let(:two_pair_lower) { Hand::from_string("6H 6H 5H 5H 3C", deck) }
 
-  let(:a_pair) { Card::from_string("7H 7H 5H 4H 3C") }
-  let(:a_pair_lower) { Card::from_string("6H 6H 5H 4H 3C") }
+  let(:a_pair) { Hand::from_string("7H 7H 5H 4H 3C", deck) }
+  let(:a_pair_lower) { Hand::from_string("6H 6H 5H 4H 3C", deck) }
 
   let(:high) { Hand::from_string("AD TD 9S 5C 4C", deck) }
   let(:high_lower) { Hand::from_string("2D TD 9S 5C 4C", deck) }

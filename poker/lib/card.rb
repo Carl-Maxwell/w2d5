@@ -8,7 +8,7 @@ class Card
     }
 
     VALUE_STRINGS = {
-      :deuce => "2",
+      :two => "2",
       :three => "3",
       :four  => "4",
       :five  => "5",
@@ -24,7 +24,7 @@ class Card
     }
 
     POKER_VALUE = {
-      :deuce => 2,
+      :two => 2,
       :three => 3,
       :four  => 4,
       :five  => 5,
@@ -56,7 +56,7 @@ class Card
     card_objects = []
     cards.each do |card|
       val, suit = card.split('')
-      card_objects << Card.new(string_to_val[val], string_to_suit[suit])
+      card_objects << Card.new(string_to_value[val], string_to_suit[suit])
     end
 
     card_objects
@@ -77,5 +77,8 @@ class Card
     end
   end
 
+  def poker_value
+    POKER_VALUE[value]
+  end
 
 end

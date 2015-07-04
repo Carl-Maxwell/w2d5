@@ -16,11 +16,11 @@ class Deck
   end
 
   def count
-    cards.length
+    @cards.length
   end
 
   def shuffle
-    @cards = @cards.shuffle
+    @cards = cards.shuffle
   end
 
   def take(n)

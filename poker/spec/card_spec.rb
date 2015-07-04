@@ -12,7 +12,7 @@ describe Card do
   end
 
   describe "#override spaceship operator" do
-    subject(:two_of_hearts) { Card.new(:deuce, :hearts) }
+    subject(:two_of_hearts) { Card.new(:two, :hearts) }
     subject(:king_of_diamonds) { Card.new(:king, :diamonds) }
     it "two of hearts is less than king of diamonds" do
       expect(two_of_hearts < king_of_diamonds).to be(true)
